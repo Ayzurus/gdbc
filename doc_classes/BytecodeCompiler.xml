@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="BytecodeCompiler" inherits="Object" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		Allows compilling [code]GDScript[/code] objects' [code]source_code[/code] into binary tokens.
+	</brief_description>
+	<description>
+		The [code]BytecodeCompiler[/code] ports the engine binary tokenization to make it accessible via GDScript and allow converting text source code into compiled bytecode.
+		In order for it to function correctly, the [code]source_code[/code] must not be empty and be a valid GDScript.
+		Using [code]BytecodeCompiler.UNCOMPRESSED[/code] will have the same result as the export option [code]Binary tokens (faster loading)[/code].
+		Using [code]BytecodeCompiler.COMPRESSED[/code] will have the same result as the export option [code]Compressed binary tokens (smaller files)[/code].
+		[b]Usage example:[/b]
+		[codeblocks]
+		[gdscript]
+		# Instantiate the compiler.
+		var compiler := BytecodeCompiler.new()
+
+		# Compile the current script object.
+		var bytes := compiler.compile_from_script(get_script())
+
+		# Compile the current script object's source code.
+		var script := get_script()
+		bytes = compiler.compile_from_string(script.source_code)
+		[/gdscript]
+		[/codeblocks]
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="compile_from_script">
+			<return type="PackedByteArray" />
+			<param index="0" name="source_script" type="Script" />
+			<param index="1" name="compression" type="BytecodeCompiler.CompressionMode" />
+			<description>
+			Compiles the given [code]GDScript[/code] object into bytecode.
+			Returns an empty [code]PackedByteArray[/code] in case an error occured during compilation.
+			</description>
+		</method>
+		<method name="compile_from_string">
+			<return type="PackedByteArray" />
+			<param index="0" name="source_code" type="String" />
+			<param index="1" name="compression" type="BytecodeCompiler.CompressionMode" />
+			<description>
+			Compiles the given [code]source_code[/code] into bytecode.
+			Returns an empty [code]PackedByteArray[/code] in case an error occured during compilation.
+			</description>
+		</method>
+		<method name="compress">
+			<return type="PackedByteArray" />
+			<param index="0" name="bytecode" type="PackedByteArray" />
+			<description>
+			Compresses the bytecode.
+			The bytecode must be valid and a result of having called [code]compile_from_script[/code] or [code]compile_from_string[/code] without compression.
+			Returns an empty [code]PackedByteArray[/code] in case an error occured during compression or if the bytecode is not valid.
+			Returns the same bytecode as the input argument if the bytecode is already compressed, indicating it with a warning.
+			</description>
+		</method>
+	</methods>
+</class>
