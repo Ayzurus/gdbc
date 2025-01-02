@@ -8,18 +8,18 @@ Since the GDExtension API is not an exact replica of the engine's code, there ar
 
 ## Usage
 
-The addon will add an object to GDscript called `BytecodeCompiler` which, when instantiated, will allow to compile a `GDScript` object or its source code directly into a `PackedByteArray` of bytecode.
+The addon will add an object called `BytecodeCompiler` which, when instantiated, will allow to compile a `GDScript` object or its source code directly into a `PackedByteArray` of bytecode.
 
 It is also possible to compress the binary tokens with zstd, just like in the exporting options, using the `compression` flag argument.
 
 - `BytecodeCompiler.UNCOMPRESSED` will have the same result as the export option `Binary tokens (faster loading)`.
-- `BytecodeCompiler.COMPRESSED` will have the same result as the export option `[code]`Compressed binary tokens (smaller files)`.
+- `BytecodeCompiler.COMPRESSED` will have the same result as the export option `Compressed binary tokens (smaller files)`.
 
 By default, the bytecode compilation will be uncompressed.
 
-Compilling from any GDScript or String source code:
+Compilling from any GDScript or source code:
 
-```python
+```gdscript
 # Instantiate the compiler.
 var compiler := BytecodeCompiler.new()
 
@@ -29,6 +29,9 @@ var bytes := compiler.compile_from_script(get_script())
 # Compile the current script object's source code.
 var script := get_script()
 bytes = compiler.compile_from_string(script.source_code)
+
+# In case we wish to compress later, instead of during compression.
+bytes = compiler.compress(bytes)
 ```
 
 ## Decompilling
