@@ -1,0 +1,1181 @@
+[gd_scene load_steps=6 format=3 uid="uid://kvqv624asrc5"]
+
+[ext_resource type="Script" path="res://test_scene.gd" id="1_qx65o"]
+
+[sub_resource type="Gradient" id="Gradient_d5cbs"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_iqgky"]
+gradient = SubResource("Gradient_d5cbs")
+
+[sub_resource type="Gradient" id="Gradient_m2idi"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.180392, 0.180392, 0.180392, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q67qs"]
+gradient = SubResource("Gradient_m2idi")
+
+[node name="TestScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qx65o")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/CenterContainer"]
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/CenterContainer"]
+custom_minimum_size = Vector2(580, 580)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_q67qs")
+expand_mode = 1
+
+[node name="Grid" type="GridContainer" parent="Panel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 8
+
+[node name="Square1" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square2" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square3" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square4" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square5" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square6" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square7" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square8" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square9" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square10" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square11" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square12" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square13" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square14" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square15" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square16" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square17" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square18" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square19" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square20" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square21" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square22" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square23" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square24" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square25" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square26" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square27" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square28" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square29" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square30" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square31" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square32" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square33" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square34" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square35" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square36" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square37" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square38" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square39" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square40" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square41" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square42" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square43" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square44" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square45" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square46" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square47" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square48" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square49" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square50" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square51" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square52" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square53" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square54" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square55" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square56" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square57" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square58" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square59" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square60" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square61" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square62" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square63" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square64" type="TextureRect" parent="Panel/Grid"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Box" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -566.0
+offset_right = -309.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Grid" type="GridContainer" parent="Box"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 8
+
+[node name="Square1" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square2" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square3" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square4" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square5" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square6" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square7" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square8" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square9" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square10" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square11" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square12" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square13" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square14" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square15" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square16" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square17" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square18" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square19" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square20" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square21" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square22" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square23" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square24" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square25" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square26" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square27" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square28" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square29" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square30" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square31" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square32" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square33" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square34" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square35" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square36" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square37" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square38" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square39" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square40" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square41" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square42" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square43" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square44" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square45" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square46" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square47" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square48" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square49" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square50" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square51" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square52" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square53" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square54" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square55" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square56" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square57" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square58" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square59" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square60" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square61" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square62" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square63" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="Square64" type="TextureRect" parent="Box/Grid"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_iqgky")
+expand_mode = 1
+
+[node name="ButtonSetall" type="Button" parent="Box"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Set All"
+
+[node name="ButtonReset" type="Button" parent="Box"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Reset All"
+
+[node name="ButtonClose" type="Button" parent="Box"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Exit"

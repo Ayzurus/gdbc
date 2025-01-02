@@ -10,6 +10,7 @@ config_version=5
 
 [application]
 
-config/name="GDExtension Bytecode Compiler Test"
+config/name="GD Bytecode Compiler Test"
+run/main_scene="res://test_window.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
