@@ -1204,17 +1204,9 @@ void GDScriptTokenizerText::check_indent() {
 		}
 		if (_peek() == '#') {
 			// Comment. Advance to the next line.
-#ifdef TOOLS_ENABLED
-			String comment;
-			while (_peek() != '\n' && !_is_at_end()) {
-				comment += _advance();
-			}
-			comments[line] = CommentData(comment, true);
-#else
 			while (_peek() != '\n' && !_is_at_end()) {
 				_advance();
 			}
-#endif // TOOLS_ENABLED
 			if (_is_at_end()) {
 				// Reached the end with an empty line, so just dedent as much as needed.
 				pending_indents -= indent_level();
@@ -1340,17 +1332,9 @@ void GDScriptTokenizerText::_skip_whitespace() {
 				break;
 			case '#': {
 				// Comment.
-#ifdef TOOLS_ENABLED
-				String comment;
-				while (_peek() != '\n' && !_is_at_end()) {
-					comment += _advance();
-				}
-				comments[line] = CommentData(comment, is_bol);
-#else
 				while (_peek() != '\n' && !_is_at_end()) {
 					_advance();
 				}
-#endif // TOOLS_ENABLED
 				if (_is_at_end()) {
 					return;
 				}
