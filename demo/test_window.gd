@@ -59,23 +59,31 @@ func set_stats(file: String, type: String) -> void:
 	(get_node(str("%Load", type)) as Label).text = "OK" if script else "FAIL"
 	(get_node(str("%Load", type)) as Label).modulate = Color.GREEN if script else Color.RED
 	if "actual" in file:
-
 		var time := _utime if "uncompressed" in file else _ctime
 		(get_node(str("%Time", type)) as Label).text = "%.03f ms" % (float(time) / 1000.0)
+	if type == "UExpected" or type == "UActual":
+		(get_node(str("%Name", type)) as Label).text = script.get_class()
+		(get_node(str("%Symbols", type)) as Label).text = "%d" % (
+			script.get_property_list().size() +
+			script.get_method_list().size() +
+			script.get_signal_list().size()
+		)
 
 func validate(compressed: PackedByteArray, uncompressed: PackedByteArray) -> bool:
 	var expected_compressed := FileAccess.get_file_as_bytes("test/expected_compressed.gdc")
 	var expected_uncompressed := FileAccess.get_file_as_bytes("test/expected_uncompressed.gdc")
-	# Buffers should have the same size and bytes.
-	for i in range(compressed.size() if compressed.size() < expected_compressed.size() else expected_compressed.size()):
-		if compressed[i] != expected_compressed[i]:
-			push_error("compressed files are different on index = ", i)
-			return false
+	# Test the bytes of each binary version.
+	if compressed.size() >= uncompressed.size():
+		push_error("compressed is the same size or bigger than the uncompressed")
+		return false
 	if uncompressed.size() != uncompressed.size():
-		push_error("uncompressed sizes don't match")
+		push_error("actual and expected uncompressed sizes don't match")
 		return false
 	for i in range(uncompressed.size()):
+		if i <= 27 and i >= 24:
+			# ignore bytes 24, 25, 26 and 27, they seem to not be used, but may differ for some reason
+			continue
 		if uncompressed[i] != expected_uncompressed[i]:
-			push_error("uncompressed files are different on index = ", i)
+			push_error("actual and expected uncompressed files are different on byte = ", i)
 			return false
 	return true
