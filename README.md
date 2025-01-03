@@ -1,5 +1,8 @@
 # GD Bytecode Compiler
 
+[![Godot Engine 4.3](https://img.shields.io/badge/Godot_Engine-4.x-blue)](https://godotengine.org/)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue)](LICENSE.md)
+
 This is a port of the [Godot engine's GDscript tokenizer](https://github.com/godotengine/godot/tree/master/modules/gdscript) into GDExtension format to be freely called upon from GDscript itself.
 
 The core idea is to allow the binary tokenization from Godot 4.3 to be called from any point of the editor or even in-game, allowing to compile text scripts in text format into binary tokens at any point.
