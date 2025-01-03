@@ -69,7 +69,7 @@ public:
 	static int _token_to_binary(const Token &p_token, Vector<uint8_t> &r_buffer, int p_start, HashMap<StringName, uint32_t> &r_identifiers_map, HashMap<Variant, uint32_t, VariantHasher, VariantComparator> &r_constants_map);
 
 public:
-	static Vector<uint8_t> parse_code_string(const String &p_code, CompressMode p_compress_mode);
+	static PackedByteArray parse_code_string(const String &p_code, CompressMode p_compress_mode);
 
 	virtual int get_cursor_line() const override;
 	virtual int get_cursor_column() const override;

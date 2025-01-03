@@ -8,6 +8,8 @@ Since the GDExtension API is not an exact replica of the engine's code, there ar
 
 ## Usage
 
+Start by either building or downloading the pre-packaged version and adding it to the intended project.
+
 The addon will add an object called `BytecodeCompiler` which, when instantiated, will allow to compile a `GDScript` object or its source code directly into a `PackedByteArray` of bytecode.
 
 It is also possible to compress the binary tokens with zstd, just like in the exporting options, using the `compression` flag argument.
@@ -30,9 +32,15 @@ var bytes := compiler.compile_from_script(get_script())
 var script := get_script()
 bytes = compiler.compile_from_string(script.source_code)
 
-# In case we wish to compress later, instead of during compression.
+# In case we wish to compress later, instead of during compilation.
 bytes = compiler.compress(bytes)
 ```
+
+## Building
+
+Run Scons on the root to generate the libraries on both the `demo` and `bin` directories:
+
+`scons platform=<target-platform> target=<target_debug/target_release>`
 
 ## Decompilling
 

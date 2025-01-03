@@ -8,7 +8,7 @@ from methods import print_error
 libname = "gdbytecode"
 projectdir = "demo"
 
-localEnv = Environment(tools=["default"], PLATFORM="", LIBS="zstd")
+localEnv = Environment(tools=["default"], PLATFORM="")
 
 customs = ["custom.py"]
 customs = [os.path.abspath(path) for path in customs]

@@ -29,9 +29,9 @@
 /**************************************************************************/
 
 #include "gdscript_tokenizer_buffer.h"
-#include "io/compression.h"
 #include "io/marshalls.h"
 #include <godot_cpp/variant/utility_functions.hpp>
+#include <godot_cpp/classes/file_access.hpp>
 
 using namespace godot;
 
@@ -87,7 +87,7 @@ int GDScriptTokenizerBuffer::_token_to_binary(const Token &p_token, Vector<uint8
 	return token_len;
 }
 
-Vector<uint8_t> GDScriptTokenizerBuffer::parse_code_string(const String &p_code, CompressMode p_compress_mode) {
+PackedByteArray GDScriptTokenizerBuffer::parse_code_string(const String &p_code, CompressMode p_compress_mode) {
 	HashMap<StringName, uint32_t> identifier_map;
 	HashMap<Variant, uint32_t, VariantHasher, VariantComparator> constant_map;
 	Vector<uint8_t> token_buffer;
@@ -175,7 +175,7 @@ Vector<uint8_t> GDScriptTokenizerBuffer::parse_code_string(const String &p_code,
 		int len;
 		// Objects cannot be constant, never encode objects.
 		Error err = encode_variant(v, nullptr, len, false);
-		ERR_FAIL_COND_V_MSG(err != OK, Vector<uint8_t>(), "Error when trying to encode Variant.");
+		ERR_FAIL_COND_V_MSG(err != OK, PackedByteArray(), "Error when trying to encode Variant.");
 		contents.resize(buf_pos + len);
 		encode_variant(v, contents.ptrw() + buf_pos, len, false);
 		buf_pos += len;
@@ -199,7 +199,12 @@ Vector<uint8_t> GDScriptTokenizerBuffer::parse_code_string(const String &p_code,
 	// Store tokens.
 	contents.append_array(token_buffer);
 
-	Vector<uint8_t> buf;
+	// Convert contents to PackedByteArray.
+	PackedByteArray contents_packed;
+	contents_packed.resize(contents.size());
+	memcpy(contents_packed.ptrw(), contents.ptr(), contents.size());
+
+	PackedByteArray buf;
 
 	// Save header.
 	buf.resize(HEADER_SIZE);
@@ -207,25 +212,18 @@ Vector<uint8_t> GDScriptTokenizerBuffer::parse_code_string(const String &p_code,
 	buf.set(1, 'D');
 	buf.set(2, 'S');
 	buf.set(3, 'C');
-	encode_uint32(TOKENIZER_VERSION, buf.ptrw() + 4);
+	buf.encode_u32(4, TOKENIZER_VERSION);
 
 	switch (p_compress_mode) {
 		case COMPRESS_NONE:
-			encode_uint32(0u, buf.ptrw() + 8);
-			buf.append_array(contents);
+			buf.encode_u32(8, 0u);
+			buf.append_array(contents_packed);
 			break;
 
 		case COMPRESS_ZSTD: {
-			encode_uint32(contents.size(), buf.ptrw() + 8);
-			Vector<uint8_t> compressed;
-			int max_size = Compression::get_max_compressed_buffer_size(contents.size());
-			compressed.resize(max_size);
-
-			int compressed_size = Compression::compress(compressed.ptrw(), contents.ptr(), contents.size());
-			ERR_FAIL_COND_V_MSG(compressed_size < 0, Vector<uint8_t>(), "Error compressing GDScript tokenizer buffer.");
-			compressed.resize(compressed_size);
-
-			buf.append_array(compressed);
+			buf.encode_u32(8, contents_packed.size());
+			contents_packed = contents_packed.compress(FileAccess::COMPRESSION_ZSTD);
+			buf.append_array(contents_packed);
 		} break;
 	}
 

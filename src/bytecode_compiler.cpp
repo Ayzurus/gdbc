@@ -22,11 +22,11 @@
 
 #include "bytecode_compiler.h"
 #include "gdscript/gdscript_tokenizer_buffer.h"
-#include "io/compression.h"
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
+#include <godot_cpp/classes/file_access.hpp>
 
 using namespace godot;
 
@@ -43,38 +43,34 @@ void BytecodeCompiler::_bind_methods() {
 PackedByteArray BytecodeCompiler::compile_from_string(
 		const String &source_code, CompressionMode compression) {
 	// Validate if there is code.
-	PackedByteArray byte_array;
+	PackedByteArray bytes;
 	if (source_code.is_empty()) {
 		UtilityFunctions::push_error(
 				"Source code can't be empty. The resulting PackedByteArray will be empty.");
-		return byte_array;
+		return bytes;
 	}
 
 	// Parse the source code into binary tokens with the tokenizer.
 	auto compress_mode = compression == COMPRESSED ? GDScriptTokenizerBuffer::COMPRESS_ZSTD
 												   : GDScriptTokenizerBuffer::COMPRESS_NONE;
 	GDScriptTokenizerBuffer tokenizer;
-	const Vector<uint8_t> bytes = tokenizer.parse_code_string(source_code, compress_mode);
+	bytes = tokenizer.parse_code_string(source_code, compress_mode);
 
 	for (const auto &token : tokenizer.tokens) {
 		if (token.type == GDScriptTokenizer::Token::ERROR) {
-			// There was an error during tokenization, return the empty PackedByteArray.
+			// There was an error during tokenization, return an empty PackedByteArray.
 			UtilityFunctions::push_error(vformat(
 					"%s. The resulting PackedByteArray will be empty.", String(token.literal)));
-			return byte_array;
+			return PackedByteArray();
 		}
 	}
 
 	if (bytes.is_empty()) {
-		// Something went wrong, return the empty PackedByteArray.
+		// Something went wrong, return anyway.
 		UtilityFunctions::push_error(
 				"Bytecode compilation failed. The resulting PackedByteArray will be empty.");
-	} else {
-		// Convert the byte vector into a PackedByteArray.
-		byte_array.resize(bytes.size());
-		memcpy(byte_array.ptrw(), bytes.ptr(), bytes.size());
 	}
-	return byte_array;
+	return bytes;
 }
 
 PackedByteArray BytecodeCompiler::compile_from_script(
@@ -127,21 +123,14 @@ PackedByteArray BytecodeCompiler::compress(const PackedByteArray bytecode) {
 	// Split header and compress binary tokens.
 	PackedByteArray contents;
 	contents.resize(bytecode.size() - HEADER_SIZE);
-	memcpy(contents.ptrw(), bytecode.ptr() + HEADER_SIZE, contents.size());
-	compressed_bytecode.resize(HEADER_SIZE);
-	int max_size = Compression::get_max_compressed_buffer_size(contents.size());
-	contents.resize(max_size);
+	auto content_size = contents.size();
+	memcpy(contents.ptrw(), bytecode.ptr() + HEADER_SIZE, content_size);
+	contents = contents.compress(FileAccess::COMPRESSION_ZSTD);
 
-	PackedByteArray compressed;
-	int compressed_size = Compression::compress(compressed.ptrw(), contents.ptr(), contents.size());
-	if (compressed_size < 0) {
-		UtilityFunctions::push_error(
-				"Compression failed. The resulting PackedByteArray will be empty.");
-		return PackedByteArray();
-	}
+	compressed_bytecode.resize(HEADER_SIZE);
 	compressed_bytecode.encode_u32(0, bytecode.decode_u32(0));
 	compressed_bytecode.encode_u32(4, bytecode.decode_u32(4));
-	compressed_bytecode.encode_u32(8, compressed_size);
+	compressed_bytecode.encode_u32(8, content_size);
 	compressed_bytecode.append_array(contents);
 	return compressed_bytecode;
 }
