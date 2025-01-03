@@ -78,6 +78,7 @@ custom_minimum_size = Vector2(360, 35)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
+text = "N KBs"
 
 [node name="LabelULoad" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(360, 35)
@@ -124,6 +125,7 @@ custom_minimum_size = Vector2(360, 35)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
+text = "0 ms"
 
 [node name="LabelCSize" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(360, 35)
@@ -147,6 +149,7 @@ custom_minimum_size = Vector2(360, 35)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
+text = "N KBs"
 
 [node name="LabelCLoad" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(360, 35)
@@ -193,18 +196,53 @@ custom_minimum_size = Vector2(360, 35)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
+text = "0 ms"
 
-[node name="RunExpectedButton" type="Button" parent="MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 50)
+[node name="LabelName" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(360, 35)
 layout_mode = 2
-text = "Run TestScene with Expected Bytecode"
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Class name    "
+horizontal_alignment = 2
 
-[node name="RunActualButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="NameUExpected" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(360, 35)
 layout_mode = 2
-text = "Run TestScene with Actual Bytecode"
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+
+[node name="NameUActual" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 35)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+
+[node name="LabelSymbols" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(360, 35)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Symbols count   "
+horizontal_alignment = 2
+
+[node name="SymbolsUExpected" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 35)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="SymbolsUActual" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 35)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "0"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -222,3 +260,15 @@ custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 disabled = true
 text = "Waiting Result"
+
+[node name="RunExpectedButton" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Run TestScene with Expected Bytecode"
+
+[node name="RunActualButton" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Run TestScene with Actual Bytecode"

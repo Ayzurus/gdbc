@@ -66,7 +66,7 @@ public:
 	int pending_indents = 0;
 	bool last_token_was_newline = false;
 
-	static int _token_to_binary(const Token &p_token, Vector<uint8_t> &r_buffer, int p_start, HashMap<StringName, uint32_t> &r_identifiers_map, HashMap<Variant, uint32_t, VariantHasher, VariantComparator> &r_constants_map);
+	static int _token_to_binary(const Token &p_token, PackedByteArray &r_buffer, int p_start, HashMap<StringName, uint32_t> &r_identifiers_map, HashMap<Variant, uint32_t, VariantHasher, VariantComparator> &r_constants_map);
 
 public:
 	static PackedByteArray parse_code_string(const String &p_code, CompressMode p_compress_mode);

@@ -29,13 +29,12 @@
 /**************************************************************************/
 
 #include "gdscript_tokenizer_buffer.h"
-#include "io/marshalls.h"
 #include <godot_cpp/variant/utility_functions.hpp>
 #include <godot_cpp/classes/file_access.hpp>
 
 using namespace godot;
 
-int GDScriptTokenizerBuffer::_token_to_binary(const Token &p_token, Vector<uint8_t> &r_buffer, int p_start, HashMap<StringName, uint32_t> &r_identifiers_map, HashMap<Variant, uint32_t, VariantHasher, VariantComparator> &r_constants_map) {
+int GDScriptTokenizerBuffer::_token_to_binary(const Token &p_token, PackedByteArray &r_buffer, int p_start, HashMap<StringName, uint32_t> &r_identifiers_map, HashMap<Variant, uint32_t, VariantHasher, VariantComparator> &r_constants_map) {
 	int pos = p_start;
 
 	int token_type = p_token.type & TOKEN_MASK;
@@ -75,7 +74,7 @@ int GDScriptTokenizerBuffer::_token_to_binary(const Token &p_token, Vector<uint8
 	if (token_type & TOKEN_MASK) {
 		token_len = 8;
 		r_buffer.resize(pos + token_len);
-		encode_uint32(token_type | TOKEN_BYTE_MASK, r_buffer.ptrw() + pos);
+		r_buffer.encode_u32(pos, token_type | TOKEN_BYTE_MASK);
 		pos += 4;
 	} else {
 		token_len = 5;
@@ -83,14 +82,14 @@ int GDScriptTokenizerBuffer::_token_to_binary(const Token &p_token, Vector<uint8
 		r_buffer.set(pos, token_type);
 		pos++;
 	}
-	encode_uint32(p_token.start_line, r_buffer.ptrw() + pos);
+	r_buffer.encode_u32(pos, p_token.start_line);
 	return token_len;
 }
 
 PackedByteArray GDScriptTokenizerBuffer::parse_code_string(const String &p_code, CompressMode p_compress_mode) {
 	HashMap<StringName, uint32_t> identifier_map;
 	HashMap<Variant, uint32_t, VariantHasher, VariantComparator> constant_map;
-	Vector<uint8_t> token_buffer;
+	PackedByteArray token_buffer;
 	HashMap<uint32_t, uint32_t> token_lines;
 	HashMap<uint32_t, uint32_t> token_columns;
 
@@ -140,12 +139,13 @@ PackedByteArray GDScriptTokenizerBuffer::parse_code_string(const String &p_code,
 		}
 	}
 
-	Vector<uint8_t> contents;
+	PackedByteArray contents;
 	contents.resize(20);
-	encode_uint32(identifier_map.size(), contents.ptrw());
-	encode_uint32(constant_map.size(), contents.ptrw() + 4);
-	encode_uint32(token_lines.size(), contents.ptrw() + 8);
-	encode_uint32(token_counter, contents.ptrw() + 16);
+	contents.encode_u32(0, identifier_map.size());
+	contents.encode_u32(4, constant_map.size());
+	contents.encode_u32(8, token_lines.size());
+	contents.encode_u32(12, 0);
+	contents.encode_u32(16, token_counter);
 
 	int buf_pos = 20;
 
@@ -155,54 +155,40 @@ PackedByteArray GDScriptTokenizerBuffer::parse_code_string(const String &p_code,
 		int len = s.length();
 
 		contents.resize(buf_pos + (len + 1) * 4);
-
-		encode_uint32(len, contents.ptrw() + buf_pos);
+		contents.encode_u32(buf_pos, len);
 		buf_pos += 4;
 
 		for (int i = 0; i < len; i++) {
-			uint8_t tmp[4];
-			encode_uint32(s[i], tmp);
-			contents.set(buf_pos, tmp[0] ^ 0xb6);
-			contents.set(buf_pos + 1, tmp[1] ^ 0xb6);
-			contents.set(buf_pos + 2, tmp[2] ^ 0xb6);
-			contents.set(buf_pos + 3, tmp[3] ^ 0xb6);
+			contents.encode_u32(buf_pos, s[i] ^ 0xb6b6b6b6);
 			buf_pos += 4;
 		}
 	}
 
 	// Save constants.
 	for (const Variant &v : rev_constant_map) {
-		int len;
 		// Objects cannot be constant, never encode objects.
-		Error err = encode_variant(v, nullptr, len, false);
-		ERR_FAIL_COND_V_MSG(err != OK, PackedByteArray(), "Error when trying to encode Variant.");
-		contents.resize(buf_pos + len);
-		encode_variant(v, contents.ptrw() + buf_pos, len, false);
-		buf_pos += len;
+		ERR_FAIL_COND_V_MSG(v.get_type() == Variant::OBJECT, PackedByteArray(), "Error when trying to encode Variant.");
+		contents.append_array(UtilityFunctions::var_to_bytes(v));
 	}
+	buf_pos = contents.size();
 
 	// Save lines and columns.
 	contents.resize(buf_pos + token_lines.size() * 16);
 	for (const KeyValue<uint32_t, uint32_t> &e : token_lines) {
-		encode_uint32(e.key, contents.ptrw() + buf_pos);
+		contents.encode_u32(buf_pos, e.key);
 		buf_pos += 4;
-		encode_uint32(e.value, contents.ptrw() + buf_pos);
+		contents.encode_u32(buf_pos, e.value);
 		buf_pos += 4;
 	}
 	for (const KeyValue<uint32_t, uint32_t> &e : token_columns) {
-		encode_uint32(e.key, contents.ptrw() + buf_pos);
+		contents.encode_u32(buf_pos, e.key);
 		buf_pos += 4;
-		encode_uint32(e.value, contents.ptrw() + buf_pos);
+		contents.encode_u32(buf_pos, e.value);
 		buf_pos += 4;
 	}
 
 	// Store tokens.
 	contents.append_array(token_buffer);
-
-	// Convert contents to PackedByteArray.
-	PackedByteArray contents_packed;
-	contents_packed.resize(contents.size());
-	memcpy(contents_packed.ptrw(), contents.ptr(), contents.size());
 
 	PackedByteArray buf;
 
@@ -217,13 +203,13 @@ PackedByteArray GDScriptTokenizerBuffer::parse_code_string(const String &p_code,
 	switch (p_compress_mode) {
 		case COMPRESS_NONE:
 			buf.encode_u32(8, 0u);
-			buf.append_array(contents_packed);
+			buf.append_array(contents);
 			break;
 
 		case COMPRESS_ZSTD: {
-			buf.encode_u32(8, contents_packed.size());
-			contents_packed = contents_packed.compress(FileAccess::COMPRESSION_ZSTD);
-			buf.append_array(contents_packed);
+			buf.encode_u32(8, contents.size());
+			contents = contents.compress(FileAccess::COMPRESSION_ZSTD);
+			buf.append_array(contents);
 		} break;
 	}
 
