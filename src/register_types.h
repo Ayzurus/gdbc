@@ -23,7 +23,7 @@
 #ifndef EXAMPLE_REGISTER_TYPES_H
 #define EXAMPLE_REGISTER_TYPES_H
 
-void initialize_gdbytecode();
-void uninitialize_gdbytecode();
+void initialize_gdbc();
+void uninitialize_gdbc();
 
 #endif // EXAMPLE_REGISTER_TYPES_H

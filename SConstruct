@@ -5,7 +5,7 @@ import sys
 from methods import print_error
 
 
-libname = "gdbytecode"
+libname = "gdbc"
 projectdir = "demo"
 
 localEnv = Environment(tools=["default"], PLATFORM="")

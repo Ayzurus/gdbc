@@ -29,14 +29,14 @@
 
 using namespace godot;
 
-void initialize_gdbytecode(ModuleInitializationLevel p_level) {
+void initialize_gdbc(ModuleInitializationLevel p_level) {
 	if (p_level != MODULE_INITIALIZATION_LEVEL_CORE) {
 		return;
 	}
 	GDREGISTER_CLASS(BytecodeCompiler);
 }
 
-void uninitialize_gdbytecode(ModuleInitializationLevel p_level) {
+void uninitialize_gdbc(ModuleInitializationLevel p_level) {
 	if (p_level != MODULE_INITIALIZATION_LEVEL_CORE) {
 		return;
 	}
@@ -44,11 +44,11 @@ void uninitialize_gdbytecode(ModuleInitializationLevel p_level) {
 
 extern "C" {
 // Initialization
-GDExtensionBool GDE_EXPORT gdbytecode_init(GDExtensionInterfaceGetProcAddress p_get_proc_address,
+GDExtensionBool GDE_EXPORT gdbc_init(GDExtensionInterfaceGetProcAddress p_get_proc_address,
 		GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization) {
 	GDExtensionBinding::InitObject init_obj(p_get_proc_address, p_library, r_initialization);
-	init_obj.register_initializer(initialize_gdbytecode);
-	init_obj.register_terminator(uninitialize_gdbytecode);
+	init_obj.register_initializer(initialize_gdbc);
+	init_obj.register_terminator(uninitialize_gdbc);
 	init_obj.set_minimum_library_initialization_level(MODULE_INITIALIZATION_LEVEL_CORE);
 
 	return init_obj.init();
